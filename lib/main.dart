@@ -13,7 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_)=> DiscoverProvider())
+        ChangeNotifierProvider(
+          lazy: false,
+          create: (_)=> DiscoverProvider()..loadNextPage()
+          ), //cascade operator
       ],
     child: MaterialApp(
       title: 'TikTok Clone',
