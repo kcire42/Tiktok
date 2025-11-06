@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tiktok/config/helpers/human_format.dart';
 import 'package:tiktok/domain/entities/video_post.dart';
 
 class VideoButtons extends StatefulWidget {
@@ -39,7 +40,7 @@ class _VideoButtonsState extends State<VideoButtons> {
 
         }, icon: Icon(Icons.favorite, color: color,size: 45,)),
         const SizedBox(height: 5,),
-        Text('${likesCount}', style: const TextStyle(color: Colors.white, fontSize: 16),)
+        Text('${HumanFormat.humanReadableNumber(likesCount.toDouble())}', style: const TextStyle(color: Colors.white, fontSize: 16),)
       ]
     );
   }
@@ -64,7 +65,7 @@ class CustomIconButton extends StatelessWidget {
       children: [
         IconButton(onPressed: () {},icon: Icon(icon, color: color, size: 45,)),
         const SizedBox(height: 5,),
-        Text('${likes ?? ''}', style: const TextStyle(color: Colors.white, fontSize: 16),)
+        Text('${HumanFormat.humanReadableNumber(likes?.toDouble() ?? -1)}', style: const TextStyle(color: Colors.white, fontSize: 16),)
       ],
     );
   }

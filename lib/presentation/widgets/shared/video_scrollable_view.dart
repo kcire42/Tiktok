@@ -1,6 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:tiktok/domain/entities/video_post.dart';
 import 'package:tiktok/presentation/widgets/shared/video_buttons.dart';
+import 'package:tiktok/presentation/widgets/video/fullscreen_player.dart';
 
 class VideoScrollableView extends StatelessWidget {
   final List<VideoPost> videos;
@@ -20,11 +22,18 @@ class VideoScrollableView extends StatelessWidget {
         final videoPost = videos[index];
         return Stack(
           children:[
+            SizedBox.expand(
+              child: FullscreenPlayer(videoUrl: videoPost.videoUrl, name: videoPost.name),
+            ),
             Align (
               alignment: Alignment.bottomRight,
               child: Padding(padding: const EdgeInsets.only(bottom: 80, right: 10),
               child: Column(mainAxisSize: MainAxisSize.min,
                 children: [
+                  SpinPerfect(
+                    infinite: true,
+                    child: CustomIconButton(icon: Icons.play_circle_outline, color: Colors.white)),
+                  const SizedBox(height: 20,),
                   VideoButtons(video: videoPost, likes: videoPost.likes),
                   const SizedBox(height: 20,),
                   CustomIconButton(icon: Icons.comment, likes: 100, color: Colors.white),
