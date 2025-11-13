@@ -32,7 +32,7 @@ class VideoScrollableView extends StatelessWidget {
                 children: [
                   SpinPerfect(
                     infinite: true,
-                    child: CustomIconButton(icon: Icons.play_circle_outline, color: Colors.white)),
+                    child: CustomIconButton(icon: Icons.adjust, color: Colors.white)),
                   const SizedBox(height: 20,),
                   VideoButtons(video: videoPost, likes: videoPost.likes),
                   const SizedBox(height: 20,),
